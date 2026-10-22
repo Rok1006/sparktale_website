@@ -93,3 +93,10 @@ footer p,footer>a{color:#fff}
 @media(max-width:420px){.team .team-linkedin{margin-top:28px}}
 .team .team-linkedin{border:0;border-radius:0;padding:6px 0;background:transparent}
 .team a.team-linkedin:hover{background:transparent;text-decoration:underline;text-underline-offset:4px}
+/* A quieter central hero leaves more canvas around the story. */
+.hero-copy{width:min(820px,86%)}
+.hero h1{font-size:clamp(42px,5vw,76px)}
+.hero-logo{width:34px;height:38px;margin-bottom:22px}
+.hero-copy>p{font-size:clamp(13px,1.15vw,16px);margin-top:22px}
+.hero h1 em:after{height:6px}
+@media(max-width:700px){.hero-copy{width:90%}.hero h1{font-size:clamp(33px,6.3vw,46px)}.hero-logo{width:29px;height:32px;margin-bottom:20px}.hero-copy>p{font-size:12px;max-width:250px;margin-top:20px}}
