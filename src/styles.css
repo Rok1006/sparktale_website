@@ -231,3 +231,9 @@ footer p,footer>a{color:#fff}
 .story-step .step-number{margin-bottom:8px}
 .story-step h3{margin-bottom:8px}
 .story-step>p{line-height:1.55}
+/* Equal frames for the three walkthrough illustrations. */
+.story-step .step-visual{padding:10px;border:1px solid #a9b69466;border-radius:12px;background-color:var(--cream);overflow:hidden}
+.step-visual>.quick-autoplay,.step-visual>.scene-build-demo,.step-visual>.explore-demo{height:100%;width:100%;min-width:0}
+.step-visual .autoplay-sticker{max-width:100%;max-height:calc(100% - 20px)}
+.step-visual .explore-scene{height:42%}
+.step-visual .explore-panel{top:calc(42% + 11px)}

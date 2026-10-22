@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { artwork } from './config';
 
-const demoWords = ['dragon', 'ghost', 'cat', 'potion'] as const;
+const demoWords = ['astronaut', 'balloon'] as const;
+const demoArtwork = { astronaut: '/art/astronaut.svg', balloon: '/art/balloon.svg' };
 export function QuickCreateAutoplay() {
   const root = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -18,7 +18,7 @@ export function QuickCreateAutoplay() {
     return () => { observer.disconnect(); motion.removeEventListener('change', updateMotion); };
   }, []);
   useEffect(() => {
-    if (reduced) { setText('dragon'); setSticker('dragon'); setSubmitting(false); return; }
+    if (reduced) { setText('astronaut'); setSticker('astronaut'); setSubmitting(false); return; }
     if (!visible) return;
     let timer = 0, cancelled = false;
     const schedule = (callback: () => void, delay: number) => {
@@ -45,6 +45,6 @@ export function QuickCreateAutoplay() {
   }, [visible, reduced]);
   return <div className="quick-autoplay" ref={root}>
     <div className="autoplay-pill"><span>{text}<i className="autoplay-caret"/></span><span className={`autoplay-submit ${submitting ? 'is-submitting' : ''}`}>→</span></div>
-    <div className="autoplay-preview">{sticker && <img className="autoplay-sticker" key={sticker} src={artwork[sticker]} alt=""/>}</div>
+    <div className="autoplay-preview">{sticker && <img className="autoplay-sticker" key={sticker} src={demoArtwork[sticker]} alt=""/>}</div>
   </div>;
 }
