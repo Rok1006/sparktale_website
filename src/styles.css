@@ -262,3 +262,10 @@ h2 .phrase-green{color:var(--lime)}
 :root{--headline-green:#a4bc60}
 h2 .phrase-green,.philosophy h2 em,.team h2 em{color:var(--headline-green)}
 .philosophy h2 em,.team h2 em{color:var(--lime)}
+.hero h1 em:after{background:#a4bc60}
+.hero h1 em{color:#a4bc60}
+
+.hero h1 .draw-underline:after{content:'';background:var(--headline-green);background-clip:border-box;-webkit-background-clip:border-box;opacity:1;transform:rotate(-2deg) scaleX(0);transform-origin:left center;transition:transform 850ms cubic-bezier(.22,.7,.3,1) 500ms;pointer-events:none}
+.hero h1 .draw-underline.is-revealed:after{opacity:1;transform:rotate(-2deg) scaleX(1)}
+@media(prefers-reduced-motion:reduce){.hero h1 .draw-underline:after{display:block;transform:rotate(-2deg) scaleX(1);transition:none}}
+.hero h1 .draw-underline:after{top:auto;bottom:1px}
