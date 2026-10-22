@@ -24,3 +24,32 @@
 @media(max-width:700px){.brand-logo{width:23px;height:27px}.hero-logo{width:36px;height:40px;margin-bottom:22px}.scroll-indicator{margin-top:28px}.scroll-indicator>span{font-size:9px}.scroll-indicator>i{height:38px;margin-top:13px}}
 
 .brand{font-family:'Recoleta',serif;font-weight:700;letter-spacing:-.04em}
+/* Team: warm paper portraits pinned to an olive creative canvas. */
+.team{background-color:var(--ink);color:var(--cream);border-top:0;background-image:linear-gradient(#f8f7ee05 1px,transparent 1px),linear-gradient(90deg,#f8f7ee05 1px,transparent 1px);background-size:42px 42px;padding-bottom:160px}
+.team .eyebrow{color:#c5d2b1}.team h2 em{color:var(--lime)}
+.team .team-grid{gap:32px;margin-top:85px;align-items:start}
+.team .team-member{text-align:center;min-width:0}
+.polaroid{position:relative;padding:12px 12px 0;background:#fffdf3;color:var(--ink);box-shadow:0 3px 5px #15200d22,0 15px 28px #15200d30;transform:translateY(var(--offset)) rotate(var(--tilt));transition:transform .4s ease,box-shadow .4s ease}
+.polaroid-0{--tilt:-3deg;--offset:8px}.polaroid-1{--tilt:2deg;--offset:26px}.polaroid-2{--tilt:-1deg;--offset:0px}.polaroid-3{--tilt:3deg;--offset:20px}
+.polaroid-photo{aspect-ratio:1/1.1;display:grid;place-items:center;background:#edece1;overflow:hidden}
+.polaroid-photo>img{width:100%;height:100%;object-fit:contain;display:block}
+.polaroid-caption{min-height:94px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:18px 4px 21px;gap:7px}
+.team .polaroid-caption h3{font-family:'Recoleta',serif;font-size:23px;font-weight:600;letter-spacing:-.025em;margin:0}
+.team .polaroid-caption p{font-size:11px;color:var(--muted);line-height:1.5;margin:0}
+.team .polaroid-caption a{font-size:10px;margin-top:2px;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.polaroid-sticker{position:absolute;width:70px;height:70px;top:-22px;right:-20px;transform:rotate(15deg);pointer-events:none;transition:transform .4s ease}
+.polaroid-1 .polaroid-sticker{right:auto;left:-20px;top:-17px;transform:rotate(-15deg)}
+.polaroid-2 .polaroid-sticker{top:auto;bottom:62px;right:-22px;transform:rotate(12deg)}
+.polaroid-3 .polaroid-sticker{width:64px;height:64px;transform:rotate(20deg)}
+.polaroid:focus-within{transform:translateY(calc(var(--offset) - 9px)) rotate(0deg);box-shadow:0 20px 32px #15200d45}
+@media(hover:hover){.polaroid:hover{transform:translateY(calc(var(--offset) - 9px)) rotate(0deg);box-shadow:0 20px 32px #15200d45}.polaroid:hover .polaroid-sticker{animation:polaroid-wiggle .55s ease-in-out}}
+@keyframes polaroid-wiggle{0%,100%{rotate:0deg}30%{rotate:-9deg}65%{rotate:7deg}}
+@media(max-width:1000px){.team .team-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:650px;margin-inline:auto;gap:60px 50px;margin-top:70px}.team{padding-bottom:130px}}
+@media(max-width:700px){.team .team-grid{gap:50px 28px;margin-top:65px}.polaroid{padding:9px 9px 0}.polaroid-caption{min-height:90px;padding:16px 2px 20px}.team .polaroid-caption h3{font-size:21px}.team .polaroid-caption p{font-size:10px}.polaroid-sticker{width:55px;height:55px;right:-14px;top:-18px}.polaroid-1 .polaroid-sticker{left:-14px}.polaroid-2 .polaroid-sticker{right:-14px;bottom:68px}.polaroid-3 .polaroid-sticker{width:52px;height:52px}}
+@media(max-width:420px){.team .team-grid{grid-template-columns:minmax(0,1fr);max-width:270px;gap:50px}.polaroid-0,.polaroid-1,.polaroid-2,.polaroid-3{--offset:0px}.polaroid-photo{aspect-ratio:1/1.05}.team .polaroid-caption h3{font-size:24px}.polaroid-sticker{width:65px;height:65px}.polaroid-3 .polaroid-sticker{width:60px;height:60px}}
+@media(prefers-reduced-motion:reduce){.polaroid,.polaroid-sticker{transition:none!important;animation:none!important}.polaroid:hover,.polaroid:focus-within{transform:translateY(var(--offset)) rotate(var(--tilt))}}
+@media(max-width:420px){.team .team-grid{max-width:250px}}
+
+footer{margin:0;padding:35px 5%;background:var(--ink);color:#fff;border-top:1px solid #ffffff22}
+footer p,footer>a{color:#fff}
+@media(max-width:700px){footer{margin:0;padding:30px 7%}}
