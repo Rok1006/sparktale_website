@@ -100,3 +100,27 @@ footer p,footer>a{color:#fff}
 .hero-copy>p{font-size:clamp(13px,1.15vw,16px);margin-top:22px}
 .hero h1 em:after{height:6px}
 @media(max-width:700px){.hero-copy{width:90%}.hero h1{font-size:clamp(33px,6.3vw,46px)}.hero-logo{width:29px;height:32px;margin-bottom:20px}.hero-copy>p{font-size:12px;max-width:250px;margin-top:20px}}
+/* Slightly larger team stickers, with their collage positions preserved. */
+.polaroid-sticker{width:80px;height:80px}
+.polaroid-3 .polaroid-sticker{width:74px;height:74px}
+@media(max-width:700px){.polaroid-sticker{width:64px;height:64px}.polaroid-3 .polaroid-sticker{width:61px;height:61px}}
+@media(max-width:420px){.polaroid-sticker{width:74px;height:74px}.polaroid-3 .polaroid-sticker{width:69px;height:69px}}
+
+.idea .section-copy{max-width:660px;margin-inline:auto}
+
+.extra-ideas[hidden]{display:none}
+.presets .more-ideas-toggle{background:transparent;border-color:transparent;text-decoration:underline;text-underline-offset:3px}
+.extra-ideas{padding-top:10px;border-top:1px solid #dce0cf}
+/* Compact, noninteractive animation confined to the first walkthrough visual. */
+.visual-0{overflow:hidden}
+.quick-autoplay{height:100%;width:100%;padding:16px 12px 0;overflow:hidden}
+.autoplay-pill{height:46px;max-width:290px;margin:0 auto;border:1px solid #73825c66;border-radius:999px;background:transparent;display:flex;align-items:center;justify-content:space-between;padding:4px 4px 4px 18px;font-size:13px}
+.autoplay-pill>span:first-child{display:flex;align-items:center;min-width:0}
+.autoplay-caret{display:block;height:14px;margin-left:2px;border-right:1px solid var(--ink)}
+.autoplay-submit{display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;border-radius:50%;background:#ff8a3d;color:var(--ink);font-size:22px;transition:transform .18s ease,background .18s ease}
+.autoplay-submit.is-submitting{transform:scale(.88);background:#f27b2c}
+.autoplay-preview{height:calc(100% - 46px);display:flex;align-items:flex-start;justify-content:center;overflow:hidden;padding-top:8px}
+.autoplay-sticker{width:132px;height:132px;object-fit:contain;filter:drop-shadow(1px 5px 3px #35432a24);animation:quick-autoplay-land .72s both;transform-origin:center}
+@keyframes quick-autoplay-land{0%{opacity:0;transform:translateY(-8px) scale(.85) rotate(-5deg)}28%{opacity:1;transform:translateY(0) scale(1.05) rotate(-5deg)}62%{transform:translateY(17px) scale(1) rotate(-5deg)}80%{transform:translateY(9px) scale(1) rotate(-5deg)}100%{opacity:1;transform:translateY(13px) scale(1) rotate(-5deg)}}
+@media(max-width:1000px){.autoplay-sticker{width:120px;height:120px}}
+@media(prefers-reduced-motion:reduce){.autoplay-sticker{animation:none;transform:translateY(13px) rotate(-5deg)}.autoplay-submit{transition:none}}
