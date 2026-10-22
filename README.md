@@ -25,3 +25,5 @@ Edit `src/config.ts` to set `siteConfig.prototypeUrl` and the four team profiles
 Original sticker files were copied from the sibling prototype's `public/art` directory and retain their original appearance. The Quick Create showcase only uses three preset words and has no AI or backend integration. It supports pointer dragging, arrow-key movement, replay, reset, and reduced-motion preferences.
 
 The hero uses a bounded, lightweight gravity simulation with sticker collisions and floor bounces. It stops after settling and presents a static arrangement when reduced motion is enabled. Scroll reveals use IntersectionObserver without scroll hijacking.
+
+Hero stickers use unique PNG artwork, with a viewport-dependent count to keep spacing open. Drag and release to throw; arrow keys move a focused sticker and Space/Enter toss it. Reduced motion keeps direct positioning available without automatic falling or tossing.
