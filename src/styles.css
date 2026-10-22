@@ -269,3 +269,34 @@ h2 .phrase-green,.philosophy h2 em,.team h2 em{color:var(--headline-green)}
 .hero h1 .draw-underline.is-revealed:after{opacity:1;transform:rotate(-2deg) scaleX(1)}
 @media(prefers-reduced-motion:reduce){.hero h1 .draw-underline:after{display:block;transform:rotate(-2deg) scaleX(1);transition:none}}
 .hero h1 .draw-underline:after{top:auto;bottom:1px}
+/* Keep highlighted text readable on light and dark sections. */
+::selection{background:var(--lime);color:var(--ink)}
+.philosophy{min-height:calc(90svh + 80px);padding-block:180px}
+@media(max-width:1000px){.philosophy{padding-block:140px}}
+@media(max-width:700px){.philosophy{min-height:calc(80svh + 60px);padding-block:120px}}
+
+/* Persistent section navigation; anchors clear the actual header height. */
+html{scroll-padding-top:calc(var(--nav-height,96px) + 16px)}
+.header{position:fixed;z-index:20;background:#f8f7eef5;border-bottom:1px solid #38452a0c}
+.header nav{gap:28px;font-size:12px}
+.nav-toggle{display:none;background:transparent;padding:10px 0;font-size:12px;align-items:center;gap:10px}
+@media(max-width:800px){.nav-toggle{display:inline-flex}.header nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;padding:10px 6% 18px;background:var(--cream);border-bottom:1px solid #dce0cf;box-shadow:0 8px 12px #38452a08}.header nav.nav-open{display:flex}.header nav a{font-size:13px;padding:12px 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.header{background:transparent;border-bottom:0}
+@media(max-width:800px){.header nav{background:transparent;border-bottom:0;box-shadow:none}}
+
+/* Frost only the content behind the compact navigation, never its text. */
+.header{height:70px;min-height:70px;padding:0 4.5%;background:rgba(248,247,238,var(--nav-tint,0));backdrop-filter:var(--nav-backdrop,none);-webkit-backdrop-filter:var(--nav-backdrop,none);transition:backdrop-filter 180ms ease,-webkit-backdrop-filter 180ms ease,background-color 180ms ease}
+@media(max-width:800px){.header{height:68px;min-height:68px;padding:0 6%}}
+@media(prefers-reduced-motion:reduce){.header{transition:none}}
+
+/* Fixed top navigation with the previous compact frosted treatment. */
+.header{height:70px;min-height:70px;padding:0 4.5%;background:rgba(248,247,238,var(--nav-tint,0));backdrop-filter:var(--nav-backdrop,none);-webkit-backdrop-filter:var(--nav-backdrop,none);transition:backdrop-filter 180ms ease,background-color 180ms ease}
+.nav-active-indicator{display:none}
+.header nav a[aria-current="location"]{text-decoration:underline;text-underline-offset:5px}
+@media(max-width:800px){.header{height:68px;min-height:68px;padding:0 6%}}
+@media(prefers-reduced-motion:reduce){.header{transition:none}}
+/* Original transparent, non-sticky top navigation. */
+.header{position:absolute;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border:0;box-shadow:none;transition:none}
+@media(max-width:800px){.header nav{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;border:0}}
+html{scroll-padding-top:30px}

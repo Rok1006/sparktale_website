@@ -11,6 +11,53 @@ import { PhilosophyHeadline } from './PhilosophyHeadline';
 import { RevealPhrase } from './RevealPhrase';
 
 function Brand() { return <a className="brand" href="#" aria-label="SPARKTALE home"><img className="brand-logo" src="/art/Logo.svg" alt=""/> Sparktale</a>; }
+const navigationLinks = [ ['The idea', '#idea'], ['How it works', '#how'], ['Our philosophy', '#philosophy'], ['Try it', '#demo'], ['The team', '#team'] ];
+function Navigation() {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('');
+  const header = useRef<HTMLElement>(null);
+  const nav = useRef<HTMLElement>(null);
+  const toggle = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      let current = '';
+      for (const [, href] of navigationLinks) {
+        const section = document.querySelector(href)!;
+        if (section.getBoundingClientRect().top <= window.innerHeight * .38) current = href;
+      }
+      setActive(current);
+      const progress = Math.min(1, Math.max(0, window.scrollY / 100));
+      header.current?.style.setProperty('--nav-backdrop', progress ? `blur(${14 * progress}px)` : 'none');
+      header.current?.style.setProperty('--nav-tint', String(progress * .1));
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update(); window.addEventListener('scroll', schedule, { passive: true }); window.addEventListener('resize', schedule);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule); };
+  }, []);
+  useEffect(() => {
+    const measure = () => {
+      document.documentElement.style.setProperty('--nav-height', `${header.current!.getBoundingClientRect().height}px`);
+      const link = Array.from(nav.current!.querySelectorAll('a')).find(link => link.getAttribute('href') === active);
+      nav.current!.style.setProperty('--indicator-x', `${link?.offsetLeft ?? 0}px`);
+      nav.current!.style.setProperty('--indicator-y', `${link?.offsetTop ?? 0}px`);
+      nav.current!.style.setProperty('--indicator-width', `${link?.offsetWidth ?? 0}px`);
+      nav.current!.style.setProperty('--indicator-height', `${link?.offsetHeight ?? 0}px`);
+    };
+    const observer = new ResizeObserver(measure); observer.observe(header.current!); observer.observe(nav.current!); measure();
+    return () => observer.disconnect();
+  }, [active, open]);
+  useEffect(() => {
+    if (!open) return;
+    const outside = (event: PointerEvent) => { if (!header.current?.contains(event.target as Node)) setOpen(false); };
+    const escape = (event: KeyboardEvent) => { if (event.key === 'Escape') { setOpen(false); toggle.current?.focus(); } };
+    document.addEventListener('pointerdown', outside); document.addEventListener('keydown', escape);
+    return () => { document.removeEventListener('pointerdown', outside); document.removeEventListener('keydown', escape); };
+  }, [open]);
+  return <header className="header" ref={header}><Brand/><button className="nav-toggle" ref={toggle} type="button" aria-expanded={open} aria-controls="section-navigation" onClick={() => setOpen(value => !value)}>{open ? 'Close' : 'Menu'} <span aria-hidden="true">{open ? '×' : '☰'}</span></button><nav ref={nav} id="section-navigation" className={`${open ? 'nav-open' : ''} ${active ? 'has-active' : ''}`} aria-label="Main navigation"><span className="nav-active-indicator" aria-hidden="true"/>{navigationLinks.map(([label, href]) => <a key={href} href={href} aria-current={active === href ? 'location' : undefined} onClick={() => { setActive(href); setOpen(false); }}>{label}</a>)}</nav></header>;
+}
+
 function PrototypeButton({ small = false }: { small?: boolean }) {
   return siteConfig.prototypeUrl ? (
     <a className={`button ${small ? 'small' : ''}`} href={siteConfig.prototypeUrl} target="_blank" rel="noopener noreferrer">
@@ -93,7 +140,7 @@ function App() {
     return () => observer.disconnect();
   }, []);
   return <><a className="skip-link" href="#main">Skip to content</a>
-    <header className="header"><Brand/><nav aria-label="Main navigation"><a href="#idea">The idea</a><a href="#demo">Try it</a><a href="#team">The team</a></nav></header>
+    <Navigation/>
     <main id="main">
       <section className="hero" id="top"><FallingStickers/><div className="hero-copy"><img className="hero-logo" src="/art/Logo.svg" alt=""/><h1>Helping little ideas<br/>grow into <RevealPhrase underline>big stories.</RevealPhrase></h1><p>A visual storytelling sandbox for young creators.</p><a className="scroll-indicator" href="#idea" aria-label="Scroll to discover SparkTale"><span>SCROLL</span><i aria-hidden="true"/></a></div></section>
       <section className="idea chapter" id="idea"><div className="reveal"><p className="eyebrow">THE IDEA</p><h2>Every story starts<br/>with a little <RevealPhrase green>what if.</RevealPhrase></h2><p className="section-copy">AI can generate a story in seconds. But what if young creators want to build one themselves?<br/>SPARKTALE gives imagination room to grow through characters, scenes, and creative decisions that remain their own.</p><span className="idea-doodle" aria-hidden="true">✧</span></div></section>
