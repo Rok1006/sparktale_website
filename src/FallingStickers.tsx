@@ -1,7 +1,14 @@
 import { useEffect, useRef } from 'react';
 
-// Two mixed waves give the floor a loose pile of original sticker artwork.
-const stickers = ['dragon', 'dog', 'ghost', 'clownfish_nemo', 'cat', 'vampire', 'robot', 'crown', 'potion', 'treasurebox', 'ghost', 'cat', 'potion', 'dragon', 'robot', 'dog', 'treasurebox', 'vampire', 'crown', 'clownfish_nemo', 'dog', 'ghost', 'dragon', 'cat', 'robot', 'potion', 'crown', 'treasurebox'];
+// One of each original sticker; portrait photos, backgrounds, and branding are excluded.
+const stickers = [
+  ['dragon', 'png'], ['alien', 'png'], ['astronaut', 'svg'], ['dog', 'png'],
+  ['jester', 'png'], ['balloon', 'svg'], ['ghost', 'png'], ['goblin', 'png'],
+  ['clownfish_nemo', 'png'], ['knight', 'png'], ['cat', 'png'], ['racoon', 'png'],
+  ['vampire', 'png'], ['robot', 'png'], ['crown', 'png'], ['potion', 'png'],
+  ['treasurebox', 'png'], ['compass', 'svg'], ['fox', 'svg'], ['frog', 'svg'],
+  ['wizard', 'svg'], ['girl', 'svg'], ['castle', 'svg'], ['search', 'svg'],
+] as const;
 interface Body { x: number; y: number; vx: number; vy: number; angle: number; spin: number; r: number; delay: number }
 interface Grab { index: number; pointerId: number; dx: number; dy: number; time: number }
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
@@ -78,9 +85,9 @@ export function FallingStickers() {
       buttons.forEach(button => button.classList.remove('is-grabbed'));
       width = element.clientWidth; height = element.clientHeight;
       // Fill roughly two rows, with fewer bodies on small screens.
-      size = Math.min(132, Math.max(62, width * .085));
+      size = Math.min(132, Math.max(42, width * .085));
       const columns = Math.max(3, Math.floor(width / (size * 1.05)));
-      const count = Math.min(stickers.length, Math.ceil(columns * 2.1));
+      const count = stickers.length;
       bodies = buttons.slice(0, count).map((button, i) => {
         button.style.width = `${size}px`; button.style.height = `${size}px`; button.hidden = false;
         const row = Math.floor(i / columns);
@@ -144,5 +151,5 @@ export function FallingStickers() {
       element.removeEventListener('lostpointercapture', release); element.removeEventListener('keydown', keydown);
     };
   }, []);
-  return <div ref={stage} className="falling-stickers" role="group" aria-label="Play with the stickers. Grab and throw, or use arrow keys to move and Space to toss.">{stickers.map((name, index) => <button type="button" className="physics-sticker" key={`${name}-${index}`} aria-label={`${name.replaceAll('_', ' ')} sticker. Drag to throw, arrows to move, Space to toss.`}><img src={`/art/${name}.png`} alt="" draggable="false"/></button>)}</div>;
+  return <div ref={stage} className="falling-stickers" role="group" aria-label="Play with the stickers. Grab and throw, or use arrow keys to move and Space to toss.">{stickers.map(([name, extension], index) => <button type="button" className="physics-sticker" key={`${name}-${index}`} aria-label={`${name.replaceAll('_', ' ')} sticker. Drag to throw, arrows to move, Space to toss.`}><img src={`/art/${name}.${extension}`} alt="" draggable="false"/></button>)}</div>;
 }
