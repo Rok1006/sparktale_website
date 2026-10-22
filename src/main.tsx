@@ -81,8 +81,8 @@ function QuickCreate() {
 }
 const storySteps = [
   { title: 'Imagine it.', text: 'Type an idea and watch it become a sticker.', art: 'dragon' as const },
-  { title: 'Make it happen.', text: 'Build scenes and decide what your characters do.', art: 'cat' as const },
-  { title: 'Spark new ideas.', text: 'Get contextual questions that inspire your next story moment.', art: 'treasure' as const },
+  { title: 'Make it happen.', text: 'Drop stickers into a scene. Story Event blocks recognize what you place and build the moment with you.', art: 'cat' as const },
+  { title: 'Spark new ideas.', text: 'Our AI-inspired creative companion asks context-aware questions to spark new possibilities, while you decide what happens next.', art: 'treasure' as const },
 ];
 function App() {
   useEffect(() => {
