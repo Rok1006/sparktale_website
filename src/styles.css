@@ -76,3 +76,13 @@ footer p,footer>a{color:#fff}
 @media(hover:hover){.demo-intro>.button:hover{background:#465535;transform:scale(1.035);animation:cta-jiggle .48s ease-in-out}}
 @keyframes cta-jiggle{0%{transform:scale(1) rotate(0)}30%{transform:scale(1.035) rotate(-2deg)}65%{transform:scale(1.035) rotate(1.5deg)}100%{transform:scale(1.035) rotate(0)}}
 @media(prefers-reduced-motion:reduce){.demo-intro>.button:hover,.demo-intro>.button:focus-visible{transform:none;animation:none}}
+/* Full-width narrative divider; identical tracks meet without a seam. */
+.marquee{width:100%;overflow:hidden;background:var(--lime);color:var(--ink);border-block:1px solid #bace8b}
+.marquee-track{display:flex;width:max-content;animation:marquee-scroll var(--marquee-duration,100s) linear infinite}
+.marquee-group{display:flex;align-items:center;justify-content:space-around;flex-shrink:0;min-width:100vw;gap:48px;padding:0 24px;min-height:80px}
+.marquee-item{display:inline-flex;align-items:center;flex-shrink:0;gap:48px;white-space:nowrap;font-size:12px;font-weight:600;letter-spacing:1.5px;line-height:1}
+.marquee-spark{font-size:29px;font-weight:400;letter-spacing:0}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:700px){.marquee-group{min-height:66px;gap:32px;padding-inline:16px}.marquee-item{font-size:10px;gap:32px;letter-spacing:1.2px}.marquee-spark{font-size:25px}}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none;width:100%}.marquee-group{width:100%;min-width:0;flex-wrap:wrap;gap:20px 28px;padding:22px}.marquee-group:nth-child(2),.marquee-repeat{display:none}.marquee-item{gap:22px}}
