@@ -86,3 +86,10 @@ footer p,footer>a{color:#fff}
 @keyframes marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:700px){.marquee-group{min-height:66px;gap:32px;padding-inline:16px}.marquee-item{font-size:10px;gap:32px;letter-spacing:1.2px}.marquee-spark{font-size:25px}}
 @media(prefers-reduced-motion:reduce){.marquee-track{animation:none;width:100%}.marquee-group{width:100%;min-width:0;flex-wrap:wrap;gap:20px 28px;padding:22px}.marquee-group:nth-child(2),.marquee-repeat{display:none}.marquee-item{gap:22px}}
+
+.team .team-linkedin{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin:calc(32px + var(--link-offset,0px)) auto 0;padding:8px 14px;min-height:34px;border:1px solid #fffdf34d;border-radius:999px;background:transparent;color:var(--cream);font-size:11px;font-weight:400;line-height:1.3;transition:background .2s,border-color .2s}
+.team-member:nth-child(1){--link-offset:8px}.team-member:nth-child(2){--link-offset:26px}.team-member:nth-child(3){--link-offset:0px}.team-member:nth-child(4){--link-offset:20px}
+.team a.team-linkedin:hover{background:#fffdf312;border-color:#fffdf399}.team .team-linkedin:disabled{opacity:.65;cursor:default}
+@media(max-width:420px){.team .team-linkedin{margin-top:28px}}
+.team .team-linkedin{border:0;border-radius:0;padding:6px 0;background:transparent}
+.team a.team-linkedin:hover{background:transparent;text-decoration:underline;text-underline-offset:4px}
