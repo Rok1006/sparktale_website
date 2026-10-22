@@ -27,3 +27,7 @@ Original sticker files were copied from the sibling prototype's `public/art` dir
 The hero uses a bounded, lightweight gravity simulation with sticker collisions and floor bounces. It stops after settling and presents a static arrangement when reduced motion is enabled. Scroll reveals use IntersectionObserver without scroll hijacking.
 
 Hero stickers use unique PNG artwork, with a viewport-dependent count to keep spacing open. Drag and release to throw; arrow keys move a focused sticker and Space/Enter toss it. Reduced motion keeps direct positioning available without automatic falling or tossing.
+
+## Story gallery
+
+Edit `src/storyGalleryData.ts` to replace the four explicit placeholders with team-created screenshots. Set `screenshot` to a public asset path, supply `imageDescription` and the real Story Event `caption`, and set `placeholder: false`. Images use `object-fit: contain` so story content is preserved. The gallery supports native swipe scrolling, mouse dragging, arrow controls, keyboard browsing, and a native modal preview.

@@ -9,9 +9,10 @@ import { SceneBuildAutoplay } from './SceneBuildAutoplay';
 import { ExploreIdeaAutoplay } from './ExploreIdeaAutoplay';
 import { PhilosophyHeadline } from './PhilosophyHeadline';
 import { RevealPhrase } from './RevealPhrase';
+import { StoryGallery } from './StoryGallery';
 
 function Brand() { return <a className="brand" href="#" aria-label="SPARKTALE home"><img className="brand-logo" src="/art/Logo.svg" alt=""/> Sparktale</a>; }
-const navigationLinks = [ ['The idea', '#idea'], ['How it works', '#how'], ['Our philosophy', '#philosophy'], ['Try it', '#demo'], ['The team', '#team'] ];
+const navigationLinks = [ ['The idea', '#idea'], ['How it works', '#how'], ['Our philosophy', '#philosophy'], ['Try it', '#demo'], ['Made with SPARKTALE', '#stories'], ['The team', '#team'] ];
 function Navigation() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
@@ -148,6 +149,7 @@ function App() {
       <section className="how chapter" id="how"><div className="section-title reveal"><p className="eyebrow">HOW IT WORKS</p><h2>From a little spark<br/>to <RevealPhrase green>“and then…”</RevealPhrase></h2></div><div className="story-steps">{storySteps.map((step,i) => <article className="story-step reveal" key={step.title}><div className={`step-visual visual-${i}`} aria-hidden="true">{i === 0 ? <QuickCreateAutoplay/> : i === 1 ? <SceneBuildAutoplay/> : <ExploreIdeaAutoplay/>}</div><span className="step-number">0{i+1}</span><h3>{step.title}</h3><p>{step.text}</p></article>)}</div></section>
       <section className="philosophy chapter" id="philosophy"><div className="reveal"><p className="eyebrow">OUR PHILOSOPHY</p><PhilosophyHeadline/><p className="section-copy">A spark of inspiration, never a story written for you.<br/>Spark offers questions. You choose where the story goes.</p><div className="principles"><span>Start simple.</span><span>Stay curious.</span><span>Make it yours.</span></div><small>Enough about our ideas. Let's explore yours. ↓</small></div><span className="philosophy-flower" aria-hidden="true">✳</span></section>
       <section className="demo-section chapter" id="demo"><div className="demo-intro reveal"><p className="eyebrow">A LITTLE PREVIEW</p><h2>Let’s start<br/>with <RevealPhrase green>one idea.</RevealPhrase></h2><p className="section-copy">Try a word. Move a sticker.<br/>See where your imagination takes you.</p><PrototypeButton/></div><div className="demo-container reveal"><QuickCreate/></div></section>
+      <StoryGallery/>
       <section className="team chapter" id="team"><div className="reveal"><p className="eyebrow">THE PEOPLE BEHIND THE PLAY</p><h2>A few minds.<br/>One shared <RevealPhrase>spark.</RevealPhrase></h2></div><div className="team-grid">{siteConfig.team.map((member,i) => <article className="team-member reveal" key={member.name}><div className={`polaroid polaroid-${i}`}><div className="polaroid-photo">{member.image && <img src={member.image} alt={`Portrait of ${member.name}`} loading="lazy"/>}</div><div className="polaroid-caption"><h3>{member.name}</h3><span className="team-cohort">{member.cohort}</span><p>{member.role}</p>{member.url && <a href={member.url} target="_blank" rel="noreferrer">Portfolio ↗</a>}</div><Sticker name={(['knight','clownfish','jester','cat'] as const)[i]} className="polaroid-sticker"/></div>{member.linkedinUrl ? <a className="team-linkedin" href={member.linkedinUrl} target="_blank" rel="noreferrer" aria-label={`${member.name} on LinkedIn`}>LinkedIn <span aria-hidden="true">↗</span></a> : <button className="team-linkedin" type="button" disabled aria-label={`${member.name} LinkedIn profile coming soon`} title="Profile link coming soon">LinkedIn <span aria-hidden="true">↗</span></button>}</article>)}</div></section>
     </main><footer><Brand/><p>A project for the SVSD Design Competition</p><a href="#top">Back to the beginning ↑</a></footer></>;
 }
