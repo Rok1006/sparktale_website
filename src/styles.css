@@ -237,3 +237,28 @@ footer p,footer>a{color:#fff}
 .step-visual .autoplay-sticker{max-width:100%;max-height:calc(100% - 20px)}
 .step-visual .explore-scene{height:42%}
 .step-visual .explore-panel{top:calc(42% + 11px)}
+.story-step .step-visual{margin-bottom:16px}
+.philosophy .eyebrow{margin-bottom:20px}
+.philosophy .section-copy{margin-top:18px;line-height:1.6}
+.philosophy .principles{margin-top:24px}
+.philosophy small{margin-top:22px}
+/* One-time philosophy focus reveal, triggered at 65% of the viewport. */
+.philosophy-line{display:inline-block;position:relative;filter:blur(12px);opacity:.35;transition:filter 900ms ease,opacity 900ms ease}
+.philosophy-line:after{content:attr(data-text);position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;opacity:.25;transition:opacity 900ms ease}
+.philosophy-headline.is-revealed .philosophy-line{filter:blur(0);opacity:1}
+.philosophy-headline.is-revealed .philosophy-line:after{opacity:0}
+.philosophy-headline .philosophy-line:nth-of-type(2),.philosophy-headline em.philosophy-line,.philosophy-headline em.philosophy-line:after{transition-delay:200ms}
+@media(prefers-reduced-motion:reduce){.philosophy-headline .philosophy-line{filter:none;opacity:1;transition:none}.philosophy-line:after{display:none}}
+.philosophy-headline>span.philosophy-line{filter:none;opacity:1;transition:none}
+.philosophy-headline>span.philosophy-line:after{display:none}
+
+.reveal-phrase{transition-delay:200ms}
+.reveal-phrase:after{transition-delay:200ms}
+.reveal-phrase.is-revealed{filter:blur(0);opacity:1}
+.reveal-phrase.is-revealed:after{opacity:0}
+h2 .phrase-green{color:var(--lime)}
+@media(prefers-reduced-motion:reduce){.reveal-phrase{filter:none;opacity:1;transition:none}.reveal-phrase:after{display:none}}
+/* Shared headline accent, midway between olive and lime. */
+:root{--headline-green:#a4bc60}
+h2 .phrase-green,.philosophy h2 em,.team h2 em{color:var(--headline-green)}
+.philosophy h2 em,.team h2 em{color:var(--lime)}
